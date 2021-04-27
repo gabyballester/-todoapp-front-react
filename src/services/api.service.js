@@ -20,7 +20,6 @@ export async function getTodosApi() {
   try {
     const response = await axios
       .get(`${baseUrl}/todos`);
-    console.log(response);
     return response;
   } catch (err) {
     console.error(err.message);

@@ -4,11 +4,20 @@ import { getTodosApi } from '../services/api.service';
 export default function ListTodos() {
   const [todos, setTodos] = useState([])
 
-  useEffect(() => {
-    setTodos(getTodosApi());
-    console.log(todos)
-  }, [setTodos])
+  const getTodos = async e => {
+    try {
+      const {data} = await getTodosApi();
+      setTodos(data);
+    } catch (error) {
+      console.log(error.message)
+    }
+  };
 
+  useEffect(() => {
+    getTodos()
+  },[])
+
+console.log(todos);
   return (
     <Fragment>
       <table className="table mt-5 text-center">
@@ -20,11 +29,13 @@ export default function ListTodos() {
           </tr>
         </thead>
         <tbody>
-          {/*<tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-        </tr>*/}
+          {/* Example
+            <tr>
+              <td>John</td>
+              <td>Doe</td>
+              <td>john@example.com</td>
+            </tr>
+          */}
         </tbody>
       </table>
     </Fragment>
