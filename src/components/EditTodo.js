@@ -1,15 +1,17 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from "react";
 
-export default function EditTodo() {
+export default function EditTodo({ todo }) {
+  const [description, setDescription] = useState(todo.description);
+
   return (
     <Fragment>
       {/* Trigger the modal with a button */}
       <button type="button" className="btn btn-warning btn-lg"
-        data-toggle="modal" data-target="#myModal">
+        data-toggle="modal" data-target={`#id${todo.todo_id}`}>
         Edit</button>
 
       {/* Modal */}
-      <div id="myModal" className="modal fade" role="dialog">
+      <div className="modal fade" id={`id${todo.todo_id}`}>
         <div className="modal-dialog">
 
           {/* Modal content */}
@@ -21,7 +23,12 @@ export default function EditTodo() {
             </div>
 
             <div className="modal-body">
-              <input type="text" className="form-control" />
+              <input
+                type="text"
+                className="form-control"
+                value={description}
+                onChange={e => setDescription(e.target.value)}
+              />
             </div>
 
             <div className="modal-footer">

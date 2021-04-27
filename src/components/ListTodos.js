@@ -20,7 +20,7 @@ export default function ListTodos() {
 
   const deleteTodo = async (id) => {
     try {
-      const deleted = await deleteTodoApi(id)
+      await deleteTodoApi(id)
       setTodos(todos.filter(todo => todo.todo_id !== id));
     } catch (err) {
       return err.message
