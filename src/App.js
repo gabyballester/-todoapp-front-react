@@ -1,11 +1,14 @@
-import {Fragment} from 'react';
 import './App.css';
+
+// Components
+import InputTodo from './components/InputTodo';
 
 function App() {
   return (
-  <Fragment>
-     <h1>hola</h1>
-  </Fragment>
+      <div className="container">
+        <h1 className="text-center mt-5">Pern Todo List</h1>
+        <InputTodo />
+      </div>
   );
 }
 
