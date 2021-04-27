@@ -1,6 +1,14 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
+import { getTodosApi } from '../services/api.service';
 
 export default function ListTodos() {
+  const [todos, setTodos] = useState([])
+
+  useEffect(() => {
+    setTodos(getTodosApi());
+    console.log(todos)
+  }, [setTodos])
+
   return (
     <Fragment>
       <table className="table mt-5 text-center">
