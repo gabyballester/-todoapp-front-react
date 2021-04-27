@@ -7,21 +7,27 @@ const baseUrl = `${host}:${port}/api/`;
 
 export async function saveTodoApi(description) {
   try {
-    const response = await axios
+    return await axios
       .post(`${baseUrl}/todos`, { description });
-    console.log(response);
-    return response;
   } catch (err) {
-    console.error(err.message);
+    return err.message
   }
 }
 
 export async function getTodosApi() {
   try {
-    const response = await axios
+    return await axios
       .get(`${baseUrl}/todos`);
-    return response;
   } catch (err) {
-    console.error(err.message);
+    return err.message
+  }
+}
+
+export async function deleteTodoApi(id) {
+  try {
+    return await axios
+      .delete(`${baseUrl}/todos/${id}`);
+  } catch (err) {
+    return err.message
   }
 }
