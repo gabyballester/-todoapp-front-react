@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from 'react';
-import { getTodosApi } from '../services/api.service';
+import { getTodosApi, deleteTodoApi } from '../services/api.service';
 
 export default function ListTodos() {
   const [todos, setTodos] = useState([])
@@ -8,14 +8,23 @@ export default function ListTodos() {
     try {
       const { data } = await getTodosApi();
       setTodos(data);
-    } catch (error) {
-      console.log(error.message)
+    } catch (err) {
+      return err.message
     }
   };
 
   useEffect(() => {
     getTodos()
   }, [])
+
+  const deleteTodo = async (id) => {
+    try {
+      const deleteTodo = await deleteTodoApi(id)
+      console.log(deleteTodo);
+    } catch (err) {
+      return err.message
+    }
+  };
 
   return (
     <Fragment>
@@ -32,7 +41,10 @@ export default function ListTodos() {
             <tr key={todo.todo_id}>
               <td>{todo.description}</td>
               <td>Edit</td>
-              <td>Delete</td>
+              <td><button
+                className="btn btn-danger"
+                onClick={() => deleteTodo(todo.todo_id)}
+              > Delete </button></td>
             </tr>
           ))}
         </tbody>
