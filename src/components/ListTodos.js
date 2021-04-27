@@ -6,7 +6,7 @@ export default function ListTodos() {
 
   const getTodos = async e => {
     try {
-      const {data} = await getTodosApi();
+      const { data } = await getTodosApi();
       setTodos(data);
     } catch (error) {
       console.log(error.message)
@@ -15,9 +15,8 @@ export default function ListTodos() {
 
   useEffect(() => {
     getTodos()
-  },[])
+  }, [])
 
-console.log(todos);
   return (
     <Fragment>
       <table className="table mt-5 text-center">
@@ -29,13 +28,13 @@ console.log(todos);
           </tr>
         </thead>
         <tbody>
-          {/* Example
-            <tr>
-              <td>John</td>
-              <td>Doe</td>
-              <td>john@example.com</td>
+          {todos.map(todo => (
+            <tr key={todo.todo_id}>
+              <td>{todo.description}</td>
+              <td>Edit</td>
+              <td>Delete</td>
             </tr>
-          */}
+          ))}
         </tbody>
       </table>
     </Fragment>
