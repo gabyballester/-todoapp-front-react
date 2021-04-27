@@ -8,7 +8,7 @@ const baseUrl = `${host}:${port}/api/`;
 export async function saveTodoApi(description) {
   try {
     const response = await axios
-      .get(`${baseUrl}/todos`, { description });
+      .post(`${baseUrl}/todos`, { description });
     console.log(response);
     return response;
   } catch (err) {

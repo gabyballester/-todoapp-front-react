@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { saveTodoApi } from '../services/api.service';
 
-const InputTodo = () => {
-  const [description, setDescription] = useState("hello");
+export default function InputTodo () {
+  const [description, setDescription] = useState("");
+
+  let disabled = true;
+  if(description.trim().length>0){
+    disabled = false
+  }
 
   const onSubmitForm = async e => {
     e.preventDefault();
     saveTodoApi(description)
+    window.location = "/"
   };
 
   return (
@@ -17,8 +23,7 @@ const InputTodo = () => {
         value={description}
         onChange={e => setDescription(e.target.value)}
       />
-      <button className="btn btn-success">Add</button>
+      <button disabled={disabled} className="btn btn-success">Add</button>
     </form>
   )
 }
-export default InputTodo;
