@@ -18,7 +18,7 @@ export default function EditTodo({ todo }) {
   return (
     <Fragment>
       {/* Trigger the modal with a button */}
-      <button type="button" className="btn btn-warning btn-lg"
+      <button type="button" className="btn btn-warning btn-edit"
         data-toggle="modal" data-target={`#id${todo.todo_id}`}>
         Edit</button>
 
