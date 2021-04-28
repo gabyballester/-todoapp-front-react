@@ -1,7 +1,19 @@
 import { Fragment, useState } from "react";
+import { updateTodoApi } from '../services/api.service';
 
 export default function EditTodo({ todo }) {
   const [description, setDescription] = useState(todo.description);
+
+
+  const updateDescription = async e => {
+    e.preventDefault();
+    try {
+      await updateTodoApi(todo.todo_id, description);
+      window.location = "/"
+    } catch (err) {
+      return err.message
+    }
+  };
 
   return (
     <Fragment>
@@ -32,8 +44,12 @@ export default function EditTodo({ todo }) {
             </div>
 
             <div className="modal-footer">
-              <button type="button" className="btn btn-warning"
-                data-dismiss="modal">
+              <button
+                type="button"
+                className="btn btn-warning"
+                data-dismiss="modal"
+                onClick={e => updateDescription(e)}
+              >
                 Save
               </button>
               <button type="button" className="btn btn-danger"

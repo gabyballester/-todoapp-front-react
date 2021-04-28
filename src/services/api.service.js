@@ -31,3 +31,12 @@ export async function deleteTodoApi(id) {
     return err.message
   }
 }
+
+export async function updateTodoApi(id, description) {
+  try {
+    return await axios
+      .put(`${baseUrl}/todos/${id}`, { description });
+  } catch (err) {
+    return err.message
+  }
+}
