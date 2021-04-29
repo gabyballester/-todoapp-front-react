@@ -1,7 +1,7 @@
 ### Todo Web App Full Stack PERN (PostgreSQL Express React Node)
 
 Este repositorio es sólo el **frontend** del proyecto, el backend lo encontrarás aquí:  
-[https://github.com/gabyballester/todo-web-app-api-node-express-postgresql](https://github.com/gabyballester/todo-web-app-api-node-express-postgresql)
+[https://github.com/gabyballester/todo-web-app-api-node-express-postgresql-fullstack-pern](https://github.com/gabyballester/todo-web-app-api-node-express-postgresql-fullstack-pern)
 ***
 #### Sobre el proyecto
 - Servicio de llamadas a la api usando axios para el CRUD de "to-dos"
